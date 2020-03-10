@@ -50,7 +50,27 @@
   // last element.
   _.last = function(array, n) {
     /* START SOLUTION */
-
+    if (Array.isArray(array)) {
+      if (n == undefined) {
+        return array[array.length - 1];
+      } else if (typeof(n) == 'number' && Number.isInteger(n)){
+        if(array.length > n){
+          return array.slice(array.length - n ,n+1);
+        }else{
+          return array;
+        }
+        
+      } else if (typeof(n) !== 'number' || !Number.isInteger(n)) {
+        return undefined;
+      } 
+    } else if (!Array.isArray(array)) {
+      if(n == undefined){
+        return undefined;
+      }else{
+        return [];
+      }
+      
+    } 
     /* END SOLUTION */
   };
 
@@ -61,7 +81,7 @@
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
     /* START SOLUTION */
-
+    
     /* END SOLUTION */
   };
 
