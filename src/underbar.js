@@ -27,7 +27,22 @@
   // return just the first element.
   _.first = function(array, n) {
     /* START SOLUTION */
-
+    if (Array.isArray(array)) {
+      if (n == undefined) {
+        return array[0];
+      } else if (typeof(n) == 'number' && Number.isInteger(n)){
+        return array.slice(0 ,n);
+      } else if (typeof(n) !== 'number' || !Number.isInteger(n)) {
+        return undefined;
+      } 
+    } else if (!Array.isArray(array)) {
+      if(n == undefined){
+        return undefined;
+      }else{
+        return [];
+      }
+      
+    } 
     /* END SOLUTION */
   };
 
