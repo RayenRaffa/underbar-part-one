@@ -334,6 +334,7 @@
         var t2 = performance.now();
         var notSortedTime = t1 - t0;
         var sortedTime = t2 - t1;
+        console.log(notSortedTime, sortedTime);
         expect(sortedTime < notSortedTime).to.be.true;
       });
     });

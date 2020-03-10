@@ -93,11 +93,44 @@
     /* END SOLUTION */
   };
 
+  // Added _.range that is missing from the test file at /spec/spec.js ( line 329 )
+  _.range = function(int) {
+    let arr = new Array(int);
+    for(var i=0; i < arr.length; i++) {
+      arr[i] = i;
+    }
+    return arr;
+  };
   // Returns the index at which value can be found in the array, or -1 if value
   // is not present in the array.
-  _.indexOf = function(array, target){
+  _.indexOf = function(array, target, startIndex=0, isSorted=false){
     /* START SOLUTION */
-
+    let binarySearch = function(arr, target, start = 0, end = arr.length - 1) {
+      let splitIndex = Math.floor((end - start)/2);
+      if (start <= end) {
+        if (arr[splitIndex] == target) {
+          return splitIndex;
+        } else if (arr[splitIndex] < target){
+          start = splitIndex + 1;
+          binarySearch(arr, target, start, end);
+        } else if (arr[splitIndex] > target) {
+          end = splitIndex - 1;
+          binarySearch(arr, target, start, end);
+        }
+      } else {
+        return -1;
+      }
+    };
+    if (isSorted) {
+      binarySearch(array, target);
+    } else {
+      for (var i=startIndex; i < array.length; i++) {
+        if (array[i] == target) {
+          return i;
+        }
+      }  
+    }
+    return -1;
     /* END SOLUTION */
   };
 
