@@ -81,7 +81,15 @@
   // iterator function over each item in the input collection.
   _.each = function(collection, iterator) {
     /* START SOLUTION */
-    
+    if (Array.isArray(collection)) {
+      for(var i=0; i < collection.length; i++) {
+        iterator(collection[i], i, collection);
+      }
+    } else {
+      for (var key in collection) {
+        iterator(collection[key], key, collection);
+      }
+    }
     /* END SOLUTION */
   };
 
